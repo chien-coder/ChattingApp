@@ -3,6 +3,7 @@ using Services.ChattingApp.DataAccess;
 using Services.ChattingApp.DataAccess.Repositories;
 using Services.ChattingApp.DataAccess.UnitOfWork;
 using Services.ChattingApp.Domain.Interfaces;
+using Services.ChattingApp.WebAPI.Hubs;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +14,11 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// SignalR
+builder.Services.AddSignalR();
+
+// Repository
 builder.Services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
@@ -54,5 +60,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapHub<ChatHub>("/chatHub");
 
 app.Run();
