@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
-using Services.ChattingApp.Domain;
-using Services.ChattingApp.Domain.Interfaces;
+using Services.ChattingApp.Domain.Entities;
+using Services.ChattingApp.Domain.Interfaces.Base;
 using Services.ChattingApp.WebAPI.Hubs;
 
 namespace Services.ChattingApp.WebAPI.Controllers

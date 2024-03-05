@@ -1,7 +1,7 @@
-﻿using Services.ChattingApp.Domain.Interfaces;
+﻿using Services.ChattingApp.Domain.Interfaces.Base;
 using System.Linq.Expressions;
 
-namespace Services.ChattingApp.DataAccess.Repositories
+namespace Services.ChattingApp.DataAccess.Repositories.Base
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {

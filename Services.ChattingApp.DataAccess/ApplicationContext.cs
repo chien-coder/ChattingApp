@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Services.ChattingApp.Domain;
+using Services.ChattingApp.Domain.Entities;
 using System.Collections.Generic;
 
 namespace Services.ChattingApp.DataAccess

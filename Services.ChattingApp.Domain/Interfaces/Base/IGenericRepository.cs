@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Services.ChattingApp.Domain.Interfaces
+namespace Services.ChattingApp.Domain.Interfaces.Base
 {
     public interface IGenericRepository<T> where T : class
     {

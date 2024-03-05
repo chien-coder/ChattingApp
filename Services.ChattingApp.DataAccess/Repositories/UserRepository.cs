@@ -1,4 +1,5 @@
-﻿using Services.ChattingApp.Domain;
+﻿using Services.ChattingApp.DataAccess.Repositories.Base;
+using Services.ChattingApp.Domain.Entities;
 using Services.ChattingApp.Domain.Interfaces;
 
 namespace Services.ChattingApp.DataAccess.Repositories

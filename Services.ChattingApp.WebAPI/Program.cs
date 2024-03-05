@@ -1,8 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using Services.ChattingApp.DataAccess;
 using Services.ChattingApp.DataAccess.Repositories;
+using Services.ChattingApp.DataAccess.Repositories.Base;
 using Services.ChattingApp.DataAccess.UnitOfWork;
 using Services.ChattingApp.Domain.Interfaces;
+using Services.ChattingApp.Domain.Interfaces.Base;
 using Services.ChattingApp.WebAPI.Hubs;
 using System.Reflection;
 

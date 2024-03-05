@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using Services.ChattingApp.Domain;
-using Services.ChattingApp.Domain.Interfaces;
+using Services.ChattingApp.Domain.Entities;
+using Services.ChattingApp.Domain.Interfaces.Base;
 
 namespace Services.ChattingApp.WebAPI.Controllers
 {

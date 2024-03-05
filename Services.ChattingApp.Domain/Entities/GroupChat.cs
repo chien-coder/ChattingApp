@@ -1,4 +1,4 @@
-﻿namespace Services.ChattingApp.Domain
+﻿namespace Services.ChattingApp.Domain.Entities
 {
     public class GroupChat
     {
