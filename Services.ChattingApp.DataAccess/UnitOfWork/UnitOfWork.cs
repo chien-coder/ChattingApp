@@ -23,10 +23,10 @@ namespace Services.ChattingApp.DataAccess.UnitOfWork
         {
             return _context.SaveChanges();
         }
+
         public void Dispose()
         {
             _context.Dispose();
         }
     }
-
 }

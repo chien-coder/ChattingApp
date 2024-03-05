@@ -11,23 +11,31 @@ namespace Services.ChattingApp.WebAPI.Controllers
     public class MessageController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IHubContext<ChatHub> _chatHub;
+        private readonly IHubContext<SignalRHub> _signHub;
 
-        public MessageController(IUnitOfWork unitOfWork, IHubContext<ChatHub> chatHub)
+        public MessageController(IUnitOfWork unitOfWork, IHubContext<SignalRHub> signHub)
         {
             _unitOfWork = unitOfWork;
-            _chatHub = chatHub;
+            _signHub = signHub;
         }
 
         [HttpPost]
         public async Task<IActionResult> CreateMessage(Message message)
         {
             _unitOfWork.Messages.Add(message);
-            _unitOfWork.Complete();
 
-            await _chatHub.Clients.All.SendAsync("ReceiveMessage", message.Sender, message.Content);
+            try
+            {
+                var rs = _unitOfWork.Complete();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
 
-            return Ok();
+            await _signHub.Clients.All.SendAsync("ReceiveMessage", message.Sender, message.Content);
+
+            return Ok(message);
         }
 
 
