@@ -1,0 +1,2 @@
+Error
+    1. Tạo message không tạo User mới

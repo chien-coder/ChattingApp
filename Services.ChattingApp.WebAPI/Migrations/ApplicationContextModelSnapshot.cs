@@ -22,7 +22,7 @@ namespace Services.ChattingApp.WebAPI.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Services.ChattingApp.Domain.Message", b =>
+            modelBuilder.Entity("Services.ChattingApp.Domain.Entities.Message", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -46,7 +46,7 @@ namespace Services.ChattingApp.WebAPI.Migrations
                     b.ToTable("Messages");
                 });
 
-            modelBuilder.Entity("Services.ChattingApp.Domain.User", b =>
+            modelBuilder.Entity("Services.ChattingApp.Domain.Entities.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -63,15 +63,20 @@ namespace Services.ChattingApp.WebAPI.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Services.ChattingApp.Domain.Message", b =>
+            modelBuilder.Entity("Services.ChattingApp.Domain.Entities.Message", b =>
                 {
-                    b.HasOne("Services.ChattingApp.Domain.User", "Sender")
-                        .WithMany()
+                    b.HasOne("Services.ChattingApp.Domain.Entities.User", "Sender")
+                        .WithMany("Messages")
                         .HasForeignKey("SenderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Sender");
+                });
+
+            modelBuilder.Entity("Services.ChattingApp.Domain.Entities.User", b =>
+                {
+                    b.Navigation("Messages");
                 });
 #pragma warning restore 612, 618
         }

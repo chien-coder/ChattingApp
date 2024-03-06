@@ -1,0 +1,4 @@
+Postman
+    {"protocol":"json","version":1}
+    {"arguments":["Chien","ThisIsMessage"],"invocationId":"0","target":"BroadcastMessage","type":1}
+    {"arguments":["TestGroup"],"invocationId":"0","target":"JoinGroup","type":1}

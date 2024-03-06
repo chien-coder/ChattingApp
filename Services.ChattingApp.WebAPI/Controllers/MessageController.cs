@@ -24,14 +24,7 @@ namespace Services.ChattingApp.WebAPI.Controllers
         {
             _unitOfWork.Messages.Add(message);
 
-            try
-            {
-                var rs = _unitOfWork.Complete();
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            _unitOfWork.Complete();
 
             await _signHub.Clients.All.SendAsync("ReceiveMessage", message.Sender, message.Content);
 

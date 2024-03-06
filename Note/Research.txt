@@ -1,0 +1,1 @@
+1.  Vì sao phải cmt app.UseHttpsRedirection(); khi build image Docker ? 
