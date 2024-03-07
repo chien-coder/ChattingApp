@@ -3,9 +3,9 @@ using Services.ChattingApp.Domain.Interfaces.Base;
 
 namespace Services.ChattingApp.Domain.Interfaces
 {
-    public interface IMessageRepository : IGenericRepository<Message>
+    public interface IConversationRepository : IGenericRepository<Conversation>
     {
-        IEnumerable<Message> GetMessages(int? count);
+        IEnumerable<Conversation> GetConversations(int? count);
     }
 
 }

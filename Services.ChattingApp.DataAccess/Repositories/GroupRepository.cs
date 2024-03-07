@@ -4,19 +4,19 @@ using Services.ChattingApp.Domain.Interfaces;
 
 namespace Services.ChattingApp.DataAccess.Repositories
 {
-    public class UserRepository : GenericRepository<User>, IUserRepository
+    public class GroupRepository : GenericRepository<Group>, IGroupRepository
     {
-        public UserRepository(ApplicationContext context) : base(context)
+        public GroupRepository(ApplicationContext context) : base(context)
         {
         }
 
-        public IEnumerable<User> GetUsers(int? count)
+        public IEnumerable<Group> GetGroups(int? count)
         {
             if(count == null)
             {
-                return _context.Users.ToList();
+                return _context.Groups;
             }
-            return _context.Users.Take((int)count).ToList();
+            return _context.Groups.Take((int)count);
         }
     }
 

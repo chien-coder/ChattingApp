@@ -11,6 +11,8 @@ namespace Services.ChattingApp.DataAccess.UnitOfWork
 
         public IUserRepository Users { get; private set; }
         public IMessageRepository Messages { get; private set; }
+        public IGroupRepository Groups { get; private set; }
+        public IConversationRepository Conversations { get; private set; }
 
 
         public UnitOfWork(ApplicationContext context)
@@ -18,11 +20,18 @@ namespace Services.ChattingApp.DataAccess.UnitOfWork
             _context = context;
             Users = new UserRepository(_context);
             Messages = new MessageRepository(_context);
+            Groups = new GroupRepository(_context);
+            Conversations = new ConversationRepository(_context);
         }
 
         public int Complete()
         {
             return _context.SaveChanges();
+        }
+
+        public async Task<int> CompleteAsync()
+        {
+            return await _context.SaveChangesAsync();
         }
 
         public void Dispose()

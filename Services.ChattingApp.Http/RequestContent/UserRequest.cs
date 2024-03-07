@@ -1,6 +1,6 @@
 ﻿namespace Services.ChattingApp.Domain.Entities
 {
-    public class User
+    public class UserRequest
     {
         public int Id { get; set; }
 
@@ -8,6 +8,6 @@
 
         public string LastName { get; set; } = string.Empty;
 
-        public List<Group>? Groups { get; set; }
+        public  List<GroupRequest>? Groups { get; set; }
     }
 }

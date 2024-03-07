@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace Services.ChattingApp.Domain.Entities
 {
@@ -10,9 +12,16 @@ namespace Services.ChattingApp.Domain.Entities
 
         public DateTime DateTime { get; set; }
 
+        public int GroupId { get; set; }
+
+        [ForeignKey("GroupId")]
+        [JsonIgnore]
+        public Group? Group { get; set; } = new Group();
+
         public int SenderId { get; set; }
 
         [ForeignKey("SenderId")]
-        public User Sender { get; set; } = new User();
+        [JsonIgnore]
+        public User? Sender { get; set; } = new User();
     }
 }

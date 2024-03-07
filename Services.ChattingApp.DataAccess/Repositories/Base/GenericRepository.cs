@@ -1,4 +1,5 @@
-﻿using Services.ChattingApp.Domain.Interfaces.Base;
+﻿using Microsoft.EntityFrameworkCore;
+using Services.ChattingApp.Domain.Interfaces.Base;
 using System.Linq.Expressions;
 
 namespace Services.ChattingApp.DataAccess.Repositories.Base
@@ -19,6 +20,12 @@ namespace Services.ChattingApp.DataAccess.Repositories.Base
         public void AddRange(IEnumerable<T> entities)
         {
             _context.Set<T>().AddRange(entities);
+        }
+
+        public void Update(T entity)
+        {
+            _context.Attach(entity);
+            _context.Entry(entity).State = EntityState.Modified;
         }
 
         public IEnumerable<T> Find(Expression<Func<T, bool>> expression)

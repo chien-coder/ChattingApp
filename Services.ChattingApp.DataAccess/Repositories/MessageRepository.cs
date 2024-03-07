@@ -1,6 +1,7 @@
 ﻿using Services.ChattingApp.DataAccess.Repositories.Base;
 using Services.ChattingApp.Domain.Entities;
 using Services.ChattingApp.Domain.Interfaces;
+using System.Linq;
 
 namespace Services.ChattingApp.DataAccess.Repositories
 {
@@ -10,9 +11,14 @@ namespace Services.ChattingApp.DataAccess.Repositories
         {
         }
 
-        public IEnumerable<Message> GetMessages(int count)
+        public IEnumerable<Message> GetMessages(int? count)
         {
-            return _context.Messages.Take(count).ToList();
+            if(count == null)
+            {
+                return _context.Messages.ToList();
+            }
+
+            return _context.Messages.Take((int)count).ToList();
         }
     }
 

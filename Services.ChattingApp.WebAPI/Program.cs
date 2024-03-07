@@ -22,7 +22,6 @@ builder.Services.AddSignalR();
 
 // Repository
 builder.Services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 
 // Connect to Postgres with connection string from app settings
@@ -33,22 +32,6 @@ if (connectionString != null)
      options.UseNpgsql(connectionString, sql => sql.MigrationsAssembly("Services.ChattingApp.WebAPI")));
 }
 var app = builder.Build();
-
-// CreateDbIfNotExists
-//using (var scope = app.Services.CreateScope())
-//{
-//    var services = scope.ServiceProvider;
-//    try
-//    {
-//        var context = services.GetRequiredService<ApplicationContext>();
-//        context.Database.EnsureCreated();
-//    }
-//    catch (Exception ex)
-//    {
-//        var logger = services.GetRequiredService<ILogger<Program>>();
-//        logger.LogError(ex, "An error occurred creating the DB.");
-//    }
-//}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
